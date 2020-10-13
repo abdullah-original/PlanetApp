@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/mars_image"
+        android:id="@+id/planetImage"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="40dp"
@@ -19,30 +19,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/MARS_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/planetName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="MARS"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:maxLines="1"
         android:textColor="#ffffff"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mars_image" />
+        app:layout_constraintTop_toBottomOf="@+id/planetImage"
+        tools:text="@string/mars_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/planetDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:gravity="center"
         android:maxLines="2"
-        android:text="Where the android liveskljasdfhjsadfjhfdsjkhfsdkfhsjkfhsjkfhsakfhslkfahsfjksdhfklsfhskalfhsjkfhdskafhakj"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MARS_text" />
+        app:layout_constraintTop_toBottomOf="@+id/planetName"
+        tools:text="@string/mars_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

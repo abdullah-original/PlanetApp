@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">PlanetApp</string>
+    <string name="mars_name">MARS</string>
+    <string name="mars_description">Where the Android lives</string>
+    <string name="planets_text">Planets</string>
 </resources>
