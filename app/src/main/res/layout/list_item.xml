@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_item_view"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,12 +25,12 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:maxLines="1"
-        android:text="Mars"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/planet_image"
-        app:layout_constraintTop_toTopOf="@id/planet_image" />
+        app:layout_constraintTop_toTopOf="@id/planet_image"
+        tools:text="Mars" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/planet_description"
@@ -38,10 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:maxLines="1"
-        android:text="Where the android lives"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@id/planet_name"
-        app:layout_constraintTop_toBottomOf="@id/planet_name" />
+        app:layout_constraintTop_toBottomOf="@id/planet_name"
+        tools:text="Where the android lives" />
 
     <ImageView
         android:layout_width="wrap_content"

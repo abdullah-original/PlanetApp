@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class RecycleAdapter(private val data: Array<Planet>) :
+class RecycleAdapter(private val data: Array<Planet>, private val listener: PlanetListener) :
     RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder>() {
 
 
@@ -31,9 +31,18 @@ class RecycleAdapter(private val data: Array<Planet>) :
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
         holder.view.planet_name.text = data[position].name
         holder.view.planet_description.text = data[position].description
-        println("Adapter: onBindViewHolder")
+
+        // pass data to click listener
+        holder.view.setOnClickListener {
+            listener.onPlanetTapped(data[position]);
+        }
     }
 
     // return size of data
     override fun getItemCount() = data.size
+
+
+
 }
+
+

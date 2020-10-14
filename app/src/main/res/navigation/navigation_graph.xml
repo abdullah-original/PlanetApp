@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/planetDetailFragment"
         android:name="com.example.planetapp.PlanetDetailFragment"
-        android:label="PlanetDetailFragment" />
+        android:label="PlanetDetailFragment">
+        <argument
+            android:name="planet"
+            app:argType="com.example.planetapp.Planet" />
+    </fragment>
 </navigation>
