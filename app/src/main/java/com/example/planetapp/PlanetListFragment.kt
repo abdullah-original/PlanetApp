@@ -1,18 +1,15 @@
 package com.example.planetapp
 
-import android.R.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.planet_list_fragment.view.*
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.planet_list_fragment.*
 
 class PlanetListFragment : Fragment() {
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,19 +29,23 @@ class PlanetListFragment : Fragment() {
         val earth = Planet("Earth", "This is Earth")
         val mercury = Planet("Mercury", "This is Mercury")
 
-        val planetsArray = listOf(mars, earth, mercury)
+        val planetsArray = arrayOf(mars, earth, mercury, mars, mars, earth, mercury, earth)
 
-        val adapter =
-            ArrayAdapter(requireContext(),
-                layout.simple_list_item_1,
-                planetsArray.map { it.name })
-        view.planet_list.adapter = adapter
+        viewAdapter = RecycleAdapter(planetsArray)
 
+        view_planet_list // this is xml id
+            .apply {
+                setHasFixedSize(true)
 
-        view.planet_list.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val action = PlanetListFragmentDirections
-                findNavController().navigate(action.actionPlanetListFragmentToPlanetDetailFragment())
+                // specify an viewAdapter (see also next example)
+                adapter = viewAdapter
             }
+
+
+//        recyclerView.onItemClickListener =
+//            AdapterView.OnItemClickListener { parent, view, position, id ->
+//                val action = PlanetListFragmentDirections
+//                findNavController().navigate(action.actionPlanetListFragmentToPlanetDetailFragment())
+//            }
     }
 }
