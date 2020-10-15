@@ -1,5 +1,7 @@
 package com.example.planetapp
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PlanetListViewModel : ViewModel() {
@@ -8,7 +10,14 @@ class PlanetListViewModel : ViewModel() {
     val earth = Planet("Earth", "This is Earth")
     val mercury = Planet("Mercury", "This is Mercury")
 
-    val planetsArray = arrayOf(mars, earth, mercury, mars, mars, earth, mercury, earth)
+    private val planetsArray = arrayOf(mars, earth, mercury, mars, mars, earth, mercury, earth)
 
-    val viewState = PlanetListViewState(planetList =  planetsArray)
+    private val _viewState = MutableLiveData<PlanetListViewState>()
+
+    val viewState: LiveData<PlanetListViewState>
+        get() = _viewState
+
+    fun start() {
+        _viewState.value = PlanetListViewState(planetList = planetsArray)
+    }
 }

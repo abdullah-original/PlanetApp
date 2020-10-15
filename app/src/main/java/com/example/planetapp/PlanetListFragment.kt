@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.planet_list_fragment.*
 
 
 interface PlanetListener {
-    fun onPlanetTapped(planet : Planet)
+    fun onPlanetTapped(planet: Planet)
 }
 
 class PlanetListFragment : Fragment(), PlanetListener {
@@ -34,17 +35,26 @@ class PlanetListFragment : Fragment(), PlanetListener {
 
         super.onViewCreated(view, savedInstanceState)
 
-        viewAdapter = RecycleAdapter(viewModel.planetsArray, this)
+        viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
-        view_planet_list // this is xml id
-            .apply {
-                setHasFixedSize(true)
+            viewAdapter = RecycleAdapter(it.planetList, this)
 
-                // specify an viewAdapter (see also next example)
-                adapter = viewAdapter
-            }
+            // attach the adapter to the planet list in layout
+            view_planet_list // this is xml id
+                .apply {
+                    setHasFixedSize(true)
+                    // specify an viewAdapter (see also next example)
+                    adapter = viewAdapter
+                }
+        })
+        viewModel.start()
     }
+
     override fun onPlanetTapped(planet: Planet) {
-        findNavController().navigate(PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(planet))
+        findNavController().navigate(
+            PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(
+                planet
+            )
+        )
     }
 }
