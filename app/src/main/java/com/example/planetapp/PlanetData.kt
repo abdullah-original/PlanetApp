@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Planet (
+data class PlanetData(
     val name: String,
     val description: String
 ) : Parcelable

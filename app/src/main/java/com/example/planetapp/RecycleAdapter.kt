@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class RecycleAdapter(private val data: Array<Planet>, private val listener: PlanetListener) :
+class RecycleAdapter(private val data: List<PlanetData>, private val listener: PlanetListener) :
     RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder>() {
 
 

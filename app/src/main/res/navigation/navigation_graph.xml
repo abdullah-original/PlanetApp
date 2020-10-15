@@ -18,6 +18,6 @@
         android:label="PlanetDetailFragment">
         <argument
             android:name="planet"
-            app:argType="com.example.planetapp.Planet" />
+            app:argType="com.example.planetapp.PlanetData" />
     </fragment>
 </navigation>

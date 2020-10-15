@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import kotlinx.android.synthetic.main.list_item.view.*
 import kotlinx.android.synthetic.main.planet_detail_fragment.view.*
 
 class PlanetDetailFragment() : Fragment() {

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.planet_list_fragment.*
 
 
 interface PlanetListener {
-    fun onPlanetTapped(planet: Planet)
+    fun onPlanetTapped(planetResponse: PlanetData)
 }
 
 class PlanetListFragment : Fragment(), PlanetListener {
@@ -37,7 +37,7 @@ class PlanetListFragment : Fragment(), PlanetListener {
 
         viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
-            viewAdapter = RecycleAdapter(it.planetList, this)
+            viewAdapter = RecycleAdapter(it.planetResponseList, this)
 
             // attach the adapter to the planet list in layout
             view_planet_list // this is xml id
@@ -50,7 +50,7 @@ class PlanetListFragment : Fragment(), PlanetListener {
         viewModel.start()
     }
 
-    override fun onPlanetTapped(planet: Planet) {
+    override fun onPlanetTapped(planet: PlanetData) {
         findNavController().navigate(
             PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(
                 planet
