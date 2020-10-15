@@ -8,9 +8,11 @@ data class PlanetResponse(
     val id: Int,
     val name: String,
     val shortDescription: String,
-    val distanceFromSun: Float,
+    val distanceFromSun: Double,
     val description: String,
     val planetType: String,
-    val surfaceGravity: Float,
+    val surfaceGravity: Double,
     val imageURl: String
-) : Parcelable
+) : Parcelable {
+    fun mapToDomain () = PlanetData(name, shortDescription)
+}
