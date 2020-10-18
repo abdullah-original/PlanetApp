@@ -5,12 +5,12 @@ import org.junit.Test
 
 class PlanetResponseTest {
     @Test
-    fun mapToDomain() {
+    fun mapToPlanetData() {
         val name = "Earth"
         val shortDescription = "Earth is nice"
         val planetResponse = PlanetResponse(0, name, shortDescription, 1.0, "", "", 0.0, "")
 
-        val planetData = planetResponse.mapToDomain()
+        val planetData = planetResponse.mapToPlanetData()
         assertTrue(name == planetData.name)
         assertTrue(shortDescription == planetData.description)
     }

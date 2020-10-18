@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.planetapp.domain.PlanetData
 import kotlinx.android.synthetic.main.planet_list_fragment.*
 
 
@@ -53,7 +54,7 @@ class PlanetListFragment : Fragment(), PlanetListener {
     override fun onPlanetTapped(planet: PlanetData) {
         findNavController().navigate(
             PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(
-                planet
+                planet.id
             )
         )
     }
