@@ -1,5 +1,7 @@
-package com.example.planetapp
+package com.example.planetapp.di
 
+import com.example.planetapp.PlanetDetailFragment
+import com.example.planetapp.PlanetListFragment
 import dagger.Component
 
 @Component(modules = [NetworkModule::class, RepositoryModule::class])

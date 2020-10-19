@@ -1,5 +1,7 @@
-package com.example.planetapp
+package com.example.planetapp.di
 
+import com.example.planetapp.PlanetRepositoryImplementation
+import com.example.planetapp.PlanetRetrofitService
 import com.example.planetapp.domain.PlanetRepository
 import dagger.Module
 import dagger.Provides
@@ -11,6 +13,9 @@ import kotlinx.coroutines.Dispatchers
 class RepositoryModule {
     @Provides
     fun providePlanetRepository(planetRetrofitService: PlanetRetrofitService): PlanetRepository {
-        return PlanetRepositoryImplementation(planetRetrofitService, Dispatchers.IO)
+        return PlanetRepositoryImplementation(
+            planetRetrofitService,
+            Dispatchers.IO
+        )
     }
 }

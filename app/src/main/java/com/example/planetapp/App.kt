@@ -1,6 +1,8 @@
 package com.example.planetapp
 
 import android.app.Application
+import com.example.planetapp.di.ApplicationComponent
+import com.example.planetapp.di.DaggerApplicationComponent
 
 // provides ApplicationContext
 class App : Application() {

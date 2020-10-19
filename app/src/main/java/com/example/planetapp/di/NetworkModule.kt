@@ -1,4 +1,4 @@
-package com.example.planetapp
+package com.example.planetapp.di
 
 import com.example.planetapp.PlanetRetrofitService
 import dagger.Module

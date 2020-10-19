@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,6 +14,13 @@
         android:background="@drawable/galaxy"
         android:orientation="vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/visibleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="planetImage, planetDescription, planetName, planetType, surfaceGravity, longDescription" />
 
 
         <ImageView
@@ -59,18 +67,12 @@
             app:layout_constraintTop_toBottomOf="@+id/planetName"
             tools:text="@string/mars_description" />
 
-        <!--    <ScrollView-->
-        <!--        android:id="@+id/scroll"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        app:layout_constraintTop_toBottomOf="@id/planetDescription">-->
-        <!--    </ScrollView>-->
         <com.example.planetapp.PlanetDetailDescription
             android:id="@+id/distanceFromSun"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,11 +106,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/planetType" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBarDetailFragment"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:outlineAmbientShadowColor="#000000"
+            android:outlineSpotShadowColor="#000000"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
