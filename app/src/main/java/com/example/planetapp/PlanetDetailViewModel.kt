@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 
 class PlanetDetailViewModel : ViewModel() {
 
+    // reference to planetRespository so we can fetch data
     private val planetRepository: PlanetRepository =
         PlanetRepositoryImplementation(
             RetrofitClient.getClient(),

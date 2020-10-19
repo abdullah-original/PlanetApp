@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.planet_detail_description.view.*
 import kotlinx.android.synthetic.main.planet_detail_fragment.view.*
 
 class PlanetDetailFragment() : Fragment() {
@@ -39,9 +40,26 @@ class PlanetDetailFragment() : Fragment() {
             view.planetName.text = it.name
             view.planetDescription.text = it.shortDescription
 
-            // Glide is used to
+            // Glide is used to load the image
             Glide.with(this)
                 .load(Uri.parse(it.imageUrl)).into(view.planetImage);
+
+
+            // update the description boxes
+
+            view.distanceFromSun.description_title.text = "Distance from Sun"
+            view.distanceFromSun.description_text.text = it.distanceFromSun.toString()
+
+            view.longDescription.description_title.text = "Description"
+            view.longDescription.description_text.text = it.description
+
+            view.planetType.description_title.text = "Planet Type"
+            view.planetType.description_text.text = it.planetType
+
+            view.surfaceGravity.description_title.text = "Surface Gravity"
+            view.surfaceGravity.description_text.text = it.surfaceGravity.toString()
+
+
         })
 
         viewModel.fetchPlanet(args.id)
