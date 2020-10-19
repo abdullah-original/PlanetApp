@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.planetapp.domain.PlanetData
 import kotlinx.android.synthetic.main.planet_list_fragment.*
+import javax.inject.Inject
 
 
 interface PlanetListener {
@@ -20,7 +21,13 @@ interface PlanetListener {
 class PlanetListFragment : Fragment(), PlanetListener {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
-    private val viewModel: PlanetListViewModel by viewModels()
+    @Inject
+    lateinit var viewModel: PlanetListViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().applicationContext as App).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +39,8 @@ class PlanetListFragment : Fragment(), PlanetListener {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onStart() {
+        super.onStart()
         viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
             viewAdapter = RecycleAdapter(it.planetResponseList, this)

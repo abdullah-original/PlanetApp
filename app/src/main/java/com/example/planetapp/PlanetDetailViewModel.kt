@@ -7,15 +7,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.planetapp.domain.PlanetRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PlanetDetailViewModel : ViewModel() {
+class PlanetDetailViewModel @Inject constructor(private val planetRepository: PlanetRepository) :
+    ViewModel() {
 
     // reference to planetRespository so we can fetch data
-    private val planetRepository: PlanetRepository =
-        PlanetRepositoryImplementation(
-            RetrofitClient.getClient(),
-            Dispatchers.IO
-        )
+    // private val planetRepository: PlanetRepository =
+    //     PlanetRepositoryImplementation(
+    //         RetrofitClient.getClient(),
+    //         Dispatchers.IO
+    //     )
 
     private val _viewState = MutableLiveData<PlanetDetailViewState>()
 

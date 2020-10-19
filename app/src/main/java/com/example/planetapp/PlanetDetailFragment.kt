@@ -12,13 +12,20 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.planet_detail_description.view.*
 import kotlinx.android.synthetic.main.planet_detail_fragment.view.*
+import javax.inject.Inject
 
 class PlanetDetailFragment() : Fragment() {
 
     // arguments passed through the navigation graph
     private val args: PlanetDetailFragmentArgs by navArgs()
 
-    private val viewModel: PlanetDetailViewModel by viewModels()
+    @Inject
+    lateinit var viewModel: PlanetDetailViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().applicationContext as App).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +53,6 @@ class PlanetDetailFragment() : Fragment() {
 
 
             // update the description boxes
-
             view.distanceFromSun.description_title.text = "Distance from Sun"
             view.distanceFromSun.description_text.text = it.distanceFromSun.toString()
 
@@ -58,7 +64,7 @@ class PlanetDetailFragment() : Fragment() {
 
             view.surfaceGravity.description_title.text = "Surface Gravity"
             view.surfaceGravity.description_text.text = it.surfaceGravity.toString()
-
+            // could be improved ^^ according to SOLID
 
         })
 
