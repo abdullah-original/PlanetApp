@@ -2,6 +2,9 @@ package com.example.planetapp
 
 import com.example.planetapp.domain.PlanetRepository
 import com.example.planetapp.domain.PlanetRepositoryImplementation
+import com.example.planetapp.repository.PlanetRepositoryImplementation
+import com.example.planetapp.repository.retrofit.PlanetResponse
+import com.example.planetapp.repository.retrofit.PlanetRetrofitService
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -24,10 +27,11 @@ class PlanetRepositoryImplementationTest {
                 getPlanetsFromApi()
             } returns emptyList()
         }
-        planetRepo = PlanetRepositoryImplementation(
-            retrofitService,
-            dispatcher
-        )
+        planetRepo =
+            PlanetRepositoryImplementation(
+                retrofitService,
+                dispatcher
+            )
     }
 
 

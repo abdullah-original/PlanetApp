@@ -1,7 +1,7 @@
 package com.example.planetapp.di
 
-import com.example.planetapp.PlanetRepositoryImplementation
-import com.example.planetapp.PlanetRetrofitService
+import com.example.planetapp.repository.PlanetRepositoryImplementation
+import com.example.planetapp.repository.retrofit.PlanetRetrofitService
 import com.example.planetapp.domain.PlanetRepository
 import dagger.Module
 import dagger.Provides

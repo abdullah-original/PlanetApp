@@ -1,6 +1,6 @@
 package com.example.planetapp.di
 
-import com.example.planetapp.PlanetRetrofitService
+import com.example.planetapp.repository.retrofit.PlanetRetrofitService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

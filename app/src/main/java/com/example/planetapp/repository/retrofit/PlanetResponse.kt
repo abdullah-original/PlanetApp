@@ -1,7 +1,7 @@
-package com.example.planetapp
+package com.example.planetapp.repository.retrofit
 
 import android.os.Parcelable
-import com.example.planetapp.domain.PlanetData
+import com.example.planetapp.domain.PlanetListData
 import kotlinx.android.parcel.Parcelize
 
 // Data class used to store response from the API for the ListView
@@ -15,5 +15,5 @@ data class PlanetResponse(
     val imageUrl: String
 ) : Parcelable {
     fun mapToPlanetData() =
-        PlanetData(name, shortDescription, imageUrl, id)
+        PlanetListData(name, shortDescription, imageUrl, id)
 }

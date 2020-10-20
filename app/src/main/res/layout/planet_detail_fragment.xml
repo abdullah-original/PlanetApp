@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detailFragment"
+    android:id="@+id/detailFragmentScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/galaxy">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailFragmentDataComponents"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/galaxy"
-        android:orientation="vertical"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+        android:layout_height="wrap_content">
+
 
         <androidx.constraintlayout.widget.Group
-            android:id="@+id/visibleGroup"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:constraint_referenced_ids="planetImage, planetDescription, planetName, planetType, surfaceGravity, longDescription" />
-
+            app:constraint_referenced_ids="planetImage, planetName, planetDescription, distanceFromSun, longDescription, planetType, surfaceGravity" />
 
         <ImageView
             android:id="@+id/planetImage"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_marginTop="40dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:contentDescription="Planet Image" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -67,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/planetName"
             tools:text="@string/mars_description" />
 
-        <com.example.planetapp.PlanetDetailDescription
+        <com.example.planetapp.ui.planetdetails.PlanetDetailDescription
             android:id="@+id/distanceFromSun"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -79,7 +77,7 @@
             app:layout_constraintTop_toBottomOf="@id/planetDescription" />
 
 
-        <com.example.planetapp.PlanetDetailDescription
+        <com.example.planetapp.ui.planetdetails.PlanetDetailDescription
             android:id="@+id/longDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -90,7 +88,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/distanceFromSun" />
 
-        <com.example.planetapp.PlanetDetailDescription
+        <com.example.planetapp.ui.planetdetails.PlanetDetailDescription
             android:id="@+id/planetType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -101,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/longDescription" />
 
-        <com.example.planetapp.PlanetDetailDescription
+        <com.example.planetapp.ui.planetdetails.PlanetDetailDescription
             android:id="@+id/surfaceGravity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -126,6 +124,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

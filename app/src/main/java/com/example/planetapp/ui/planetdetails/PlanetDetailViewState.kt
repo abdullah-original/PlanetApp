@@ -1,4 +1,4 @@
-package com.example.planetapp
+package com.example.planetapp.ui.planetdetails
 
 data class PlanetDetailViewState(
     val id: Int,

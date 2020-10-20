@@ -1,11 +1,11 @@
-package com.example.planetapp
+package com.example.planetapp.ui.planetdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.planetapp.domain.PlanetRepository
-import kotlinx.coroutines.Dispatchers
+import com.example.planetapp.ui.planetdetails.PlanetDetailViewState
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

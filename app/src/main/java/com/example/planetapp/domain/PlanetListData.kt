@@ -7,9 +7,10 @@ import kotlinx.android.parcel.Parcelize
 // for ListView
 
 @Parcelize
-data class PlanetData(
+data class PlanetListData(
     val name: String,
     val description: String,
     val imageURL: String = "",
-    val id: Int
+    val id: Int,
+    val isFavourite: Boolean = false
 ) : Parcelable

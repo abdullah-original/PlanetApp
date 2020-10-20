@@ -1,4 +1,4 @@
-package com.example.planetapp
+package com.example.planetapp.repository.retrofit
 
 import retrofit2.http.GET
 import retrofit2.http.Path

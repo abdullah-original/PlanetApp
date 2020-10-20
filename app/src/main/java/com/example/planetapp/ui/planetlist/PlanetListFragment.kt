@@ -1,25 +1,25 @@
-package com.example.planetapp
+package com.example.planetapp.ui.planetlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.planetapp.domain.PlanetData
+import com.example.planetapp.*
 import kotlinx.android.synthetic.main.planet_list_fragment.*
 import javax.inject.Inject
 
 
-interface PlanetListener {
-    fun onPlanetTapped(planetResponse: PlanetData)
-}
+// interface PlanetListener {
+//     fun onPlanetTapped(planetResponse: Int)
+// }
 
-class PlanetListFragment : Fragment(), PlanetListener {
+class PlanetListFragment : Fragment() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
+
 
     @Inject
     lateinit var viewModel: PlanetListViewModel
@@ -41,9 +41,16 @@ class PlanetListFragment : Fragment(), PlanetListener {
 
     override fun onStart() {
         super.onStart()
+
+        // this stuff is used a lot in the real app, so probably spend some time to understand it
         viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
-            viewAdapter = RecycleAdapter(it.planetResponseList, this)
+            // ::onPlanetTapped is a reference to onPlanetTapped
+            viewAdapter =
+                RecycleAdapter(it.planetDataList) {
+                    onPlanetTapped(it)
+                }
+
 
             // attach the adapter to the planet list in layout
             view_planet_list // this is xml id
@@ -53,14 +60,28 @@ class PlanetListFragment : Fragment(), PlanetListener {
                     adapter = viewAdapter
                 }
         })
+
         viewModel.start()
     }
 
-    override fun onPlanetTapped(planet: PlanetData) {
-        findNavController().navigate(
-            PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(
-                planet.id
-            )
-        )
+    // it's easier to have this function is the fragment because
+    // findNavController is only available in fragments and activities
+    fun onPlanetTapped(intent: RecycleAdapter.Intent) {
+        when (intent) {
+            is RecycleAdapter.Intent.ItemTapped -> {
+                findNavController().navigate(
+                    PlanetListFragmentDirections.actionPlanetListFragmentToPlanetDetailFragment(
+                        intent.id
+                    )
+                )
+            }
+            is RecycleAdapter.Intent.FavouriteTapped -> {
+                viewModel.handleFavouriteIntent(intent.id)
+            }
+        }
+
     }
+
 }
+
+
