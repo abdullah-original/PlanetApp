@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.planetapp.App
-import com.example.planetapp.PlanetDetailFragmentArgs
 import com.example.planetapp.R
 import kotlinx.android.synthetic.main.planet_detail_description.view.*
 import kotlinx.android.synthetic.main.planet_detail_fragment.*

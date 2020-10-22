@@ -3,4 +3,6 @@
     <string name="mars_name">MARS</string>
     <string name="mars_description">Where the Android lives</string>
     <string name="planets_text">Planets</string>
+    <string name="shared_preference_file_name">com.planets.shared_preferences</string>
+    <string name="shared_preference_key">favourites</string>
 </resources>

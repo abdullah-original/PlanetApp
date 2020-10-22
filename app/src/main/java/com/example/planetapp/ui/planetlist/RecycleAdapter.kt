@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class RecycleAdapter(
     private val data: List<PlanetListData>,
-    private val itemTappedListener: (intent: Intent) -> Unit // this is a reference to a lambda function
+    private val itemTappedListener: (intent: Intent) -> Unit // this is a reference to a function
 ) :
     RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder>() {
 
@@ -43,13 +43,6 @@ class RecycleAdapter(
         Glide.with(holder.view.context)
             .load(Uri.parse(data[position].imageURL)).into(holder.view.planet_image);
 
-
-        if (data[position].isFavourite) {
-            holder.view.favourite_heart.setImageResource(R.drawable.ic_baseline_favorite_24)
-        } else {
-            holder.view.favourite_heart.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-        }
-
         // android gives preference to children, so if heart is clicked, it will have preference
         holder.view.favourite_heart.setOnClickListener {
             itemTappedListener(
@@ -59,8 +52,15 @@ class RecycleAdapter(
             )
         }
 
+        if (data[position].isFavourite) {
+            holder.view.favourite_heart.setImageResource(R.drawable.ic_baseline_favorite_24)
+        } else {
+            holder.view.favourite_heart.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+        }
+
+
         // pass data to click listener
-        holder.view.setOnClickListener {
+        holder.view.right_arrow.setOnClickListener {
             itemTappedListener(
                 Intent.ItemTapped(
                     data[position].id

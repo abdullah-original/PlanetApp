@@ -1,5 +1,8 @@
 package com.example.planetapp.ui.planetlist
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +21,6 @@ import javax.inject.Inject
 // }
 
 class PlanetListFragment : Fragment() {
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
 
     @Inject
@@ -45,24 +47,21 @@ class PlanetListFragment : Fragment() {
         // this stuff is used a lot in the real app, so probably spend some time to understand it
         viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
-            // ::onPlanetTapped is a reference to onPlanetTapped
-            viewAdapter =
-                RecycleAdapter(it.planetDataList) {
-                    onPlanetTapped(it)
-                }
-
 
             // attach the adapter to the planet list in layout
             view_planet_list // this is xml id
                 .apply {
                     setHasFixedSize(true)
-                    // specify an viewAdapter (see also next example)
-                    adapter = viewAdapter
+                    // specify a viewAdapter (see also next example)
+                    // ::onPlanetTapped is a reference to onPlanetTapped
+                    adapter = RecycleAdapter(it.planetDataList, ::onPlanetTapped)
                 }
         })
 
         viewModel.start()
     }
+
+
 
     // it's easier to have this function is the fragment because
     // findNavController is only available in fragments and activities

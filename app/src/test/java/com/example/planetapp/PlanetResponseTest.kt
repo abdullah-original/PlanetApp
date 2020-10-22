@@ -15,9 +15,6 @@ class PlanetResponseTest {
                 name,
                 shortDescription,
                 1.0,
-                "",
-                "",
-                0.0,
                 ""
             )
 
