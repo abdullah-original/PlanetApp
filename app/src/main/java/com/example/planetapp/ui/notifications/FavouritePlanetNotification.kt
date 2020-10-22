@@ -10,6 +10,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.planetapp.R
 
 class FavouritePlanetNotification(private val context: Context) : NotificationSender {
+    // create a channel in the constructor
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val mChannel = NotificationChannel(
@@ -30,8 +31,11 @@ class FavouritePlanetNotification(private val context: Context) : NotificationSe
             .setSmallIcon(R.drawable.mars)
             .setContentTitle("Changed a Favourite Planet")
             .setLargeIcon(
-                BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.mars))
+                BitmapFactory.decodeResource(
+                    context.getResources(),
+                    R.drawable.mars
+                )
+            )
             .setContentText(text)
             .setAutoCancel(true)
 

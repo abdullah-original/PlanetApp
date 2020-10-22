@@ -1,5 +1,9 @@
 package com.example.planetapp.ui.planetdetails
 
+import android.animation.Animator
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -47,12 +51,23 @@ class PlanetDetailFragment() : Fragment() {
         viewModel.viewState.observe(viewLifecycleOwner, Observer {
 
             view.planetName.text = it.name
+
+
+            // animate the planet text
+            (AnimatorInflater.loadAnimator(context, R.animator.animation) as AnimatorSet).apply {
+                setTarget(view.planetName)
+                start()
+            }
+
             view.planetDescription.text = it.shortDescription
 
             // Glide is used to load the image
             Glide.with(this)
                 .load(Uri.parse(it.imageUrl)).into(view.planetImage);
 
+            // animate the planet image
+            ObjectAnimator.ofFloat(view.planetImage, "scaleX", 0.0f, 1.0f).start()
+            ObjectAnimator.ofFloat(view.planetImage, "scaleY", 0.0f, 1.0f).start()
 
             // update the description boxes
             view.distanceFromSun.description_title.text = "Distance from Sun"
